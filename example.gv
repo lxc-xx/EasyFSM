@@ -1,0 +1,24 @@
+digraph StateMachine
+{
+	subgraph cluster0
+	{
+
+		Police_Rest -> Police_Run[ label = "FindThief" ];
+		Police_Run -> Police_Rest[ label = "CatchThief" ];
+
+		label = "Police";
+
+	}
+
+	subgraph cluster1
+	{
+
+		Thief_Rest -> Thief_Run[ label = "FindPolice" ];
+		Thief_Run -> Thief_Rest[ label = "CaughtByPolice" ];
+
+		label = "Thief";
+
+	}
+
+}
+

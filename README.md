@@ -1,4 +1,27 @@
 EasyFSM
 =======
 
-EasyFSM is aimed to automatically generate code for finite state machine.
+EasyFSM is aimed to automatically generate code for finite state machine, especially for the NPC behavior programming in games. Using this tool, you just need to edit a .fsm file to describe the state machince concisely. It will generate the Java code for you according the .fsm file. Also, a .gv file for GraphiZ can be created for visualizing the finte state machine.
+
++ Q:How to install?
+  
+  A: First, make sure you have installed flex and bison. Then just type the command: make.
+
++ Q: How to use?
+
+  A: You can see the example.fsm for a glimpse of the grammer of a .fsm file. Type ./easyfsm -j example.fsm example.java to generate the java code. Then you will find all you need do is to fill the code in specific position and no worry about the state machine structure. 
+  
+The EBNF of it is :
+
+   	CHAR="A"|"B"|"C"|"D"|"E"|"F"|"G"|"H"|"I"|"J"|"K"|"L"|"M"|"N"|"O"|"P"|"Q"|"R"|"S"|"T"|"U"|"V"|"W"|"X"|"Y"|"Z"|"a"|"b"|"c"|"d"|"e"|"f"|"g"|"h"|"i"|"j"|"k"|"l"|"m"|"n"|"o"|"p"|"q"|"r"|"s"|"t"|"u"|"v"|"w"|"x"|"y"|"z"|"0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"|"_";
+	
+	ARROW="->";
+	COLON=":";
+	EOL="\n";
+	LBRACE="{";
+	RBRACE="}";
+	NAME={CHAR}CHAR;
+	FSM={FSM}FSM
+		|NAME EOL LBRACE EOL ENTRY RBRACE EOL;
+	ENTRY={ENTRY}ENTRY
+		|NAME ARROW NAME COLON NAME EOL;

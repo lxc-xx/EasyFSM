@@ -1,0 +1,11 @@
+Police
+{
+	Rest->Run:FindThief
+	Run->Rest:CatchThief 
+}
+
+Thief
+{
+	Rest->Run:FindPolice
+	Run->Rest:CaughtByPolice
+}
